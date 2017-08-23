@@ -14,9 +14,18 @@ body {
   /* Set the fixed height of the footer here */
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
-  background-color: #f5f5f5;
+  background: linear-gradient(to right, #88dd9b, #87dcc3);
 }
 
+#navbar {
+    background: linear-gradient(to right, #88dd9b, #87dcc3);
+    width: 100%;
+    height: 60px;
+    font-family: Helvetica;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0px 2px 15px -3px #D6D6D6;
+}
 
 body > .container {
   padding: 60px 15px 0;
@@ -28,6 +37,10 @@ body > .container {
 }
 
 #map {
-        height: 400px;
-        width: 100%;
-       }
+    margin-top: 22px;
+    height: 600px;
+    width: 100%;
+    -webkit-border-radius:20px;
+    z-index:0;
+    box-shadow: 0px 2px 15px -3px #D6D6D6;
+}
