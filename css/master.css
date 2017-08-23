@@ -1,4 +1,4 @@
-html {
+﻿html {
   position: relative;
   min-height: 100%;
 }
@@ -26,3 +26,8 @@ body > .container {
   padding-right: 15px;
   padding-left: 15px;
 }
+
+#map {
+        height: 400px;
+        width: 100%;
+       }
