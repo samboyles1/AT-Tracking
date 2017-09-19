@@ -37,10 +37,11 @@ function updateBusPosition() {
             //make the one globl marker if it doesn't already exist
             if (busMarker == null) {
                 busMarker = new google.maps.LatLng();
-                busMarker.setMap(googlemap);
+               
             }
             //move the marker to the new bus lat long
             busMarker.setPosition(busLatLng);
+            busMarker.setMap(googlemap);
             
             //adjust the map so that the marker is in the middle of the map (will be zoomed in a lot with just one marker)
             //the map will zoom out to fit more markers if they were added to the bounds
