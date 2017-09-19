@@ -2,7 +2,9 @@
 var googlemap = null;
 var busMarker = null;
 
-//setup is called automatically when googlemaps api is loaded
+/**
+ * called automatically when the googlemaps api is loaded
+ */
 function setup() {
     //make the map just once
     initMap();
@@ -13,6 +15,9 @@ function setup() {
 }
 
 
+/**
+ * initialises the map
+ */
 function initMap() {
     //this makes the map, centred in auckland(This point will get thrown away quickly when the bus moves)
     googlemap = new google.maps.Map(document.getElementById('mapdiv'), {
@@ -21,9 +26,11 @@ function initMap() {
     });
 
 }
-//Call the vehicle location api
-//come back with the lat long of the one bus with id=3071
-//move the global single marker to the new lat long of the bus
+
+/**
+ * calls the vehicle location api and returns a lat long for a single bus
+ * moves marker to location of new lat lon of bus
+ */
 function updateBusPosition() {
     $.ajax({
         type: "GET",
@@ -34,7 +41,7 @@ function updateBusPosition() {
             var busPosition = data.response.entity[0].vehicle.position;
             var busLatLng = { lat: busPosition.latitude, lng: busPosition.longitude };
 
-            //make the one globl marker if it doesn't already exist
+            //make the one global marker if it doesn't already exist
             if (busMarker == null) {
                 busMarker = new google.maps.Marker();    
             }
