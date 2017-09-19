@@ -36,8 +36,7 @@ function updateBusPosition() {
 
             //make the one globl marker if it doesn't already exist
             if (busMarker == null) {
-                busMarker = new google.maps.LatLng();
-               
+                busMarker = new google.maps.Marker();    
             }
             //move the marker to the new bus lat long
             busMarker.setPosition(busLatLng);
