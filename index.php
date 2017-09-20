@@ -5,6 +5,7 @@ require_once 'include/header.php';
 
 <div id="mapdiv"></div>
 
+
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBh1cr8Qd4TKgA4DVOhH5NBLNvgEgmqBg4&callback=setup">
 </script>

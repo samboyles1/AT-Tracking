@@ -39,8 +39,8 @@ body > .container {
 #mapdiv {
     width: 1000px;
     margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 200px;
+    margin-right: 5px;
     height: 600px;
     -webkit-border-radius:20px;
     z-index:0;
