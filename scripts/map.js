@@ -35,10 +35,11 @@ function updateBusPosition() {
     $.ajax({
         type: "GET",
         headers: { 'Ocp-Apim-Subscription-Key': '093a87b71c14401f9ae9b72c9ace16a9' },
-        url: 'https://api.at.govt.nz/v2/public/realtime/vehiclelocations?vehicleid=3071', //get the data for vehicle 3071 - we know it exists
+        url: 'https://api.at.govt.nz/v2/public/realtime/vehiclelocations?vehicleid=3072', //get the data for vehicle 3071 - we know it exists
         dataType: 'json',
         success: function (data) {
             var busPosition = data.response.entity[0].vehicle.position;
+            //var busPosition = data.response.entity.position;
             var busLatLng = { lat: busPosition.latitude, lng: busPosition.longitude };
 
             //make the one global marker if it doesn't already exist
