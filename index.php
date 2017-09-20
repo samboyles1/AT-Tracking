@@ -3,7 +3,26 @@ $active = "home";
 require_once 'include/header.php';
 ?>
 
-<div id="mapdiv"></div>
+<div id="wrapper">
+    <div id="listDiv">
+        <select multiple size="10" id="routeSelecter">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+            <option>Option 5</option>
+            <option>Option 6</option>
+            <option>Option 7</option>
+            <option>Option 8</option>
+            <option>Option 9</option>
+        </select>
+    </div>
+    <div id="mapdiv"></div>
+</div>
+
+
+
+
 
 
 <script async defer
