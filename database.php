@@ -24,7 +24,7 @@ function getAllItems($conn)
     else {
         while ($row = $result->fetch_array(MYSQLI_ASSOC))
         {
-            $results[] = new Item($row['name'], $row['price'], $row['quantity']);
+            $results[] = new Route($row['name'], $row['price'], $row['quantity']);
         }
 
         $result->close();
