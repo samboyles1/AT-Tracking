@@ -19,6 +19,14 @@ class route {
     function add_trips($trips){
         $this->trip_ids = $trips;
     }
+
+    function get_name(){
+        return $this->route_name;
+    }
+
+    function get_id(){
+        return $this->id;
+    }
 }
 
 ?>

@@ -1,6 +1,6 @@
 <?php
-require_once("config.php");
-require_once("modles/Route.php");
+require_once("include/config.php");
+require_once("models/Route.php");
 
 $conn = new mysqli($hostname, $username, $password, $database);
 
@@ -9,7 +9,6 @@ if ($conn->connect_error)
     fatalError($conn->connect_error);
     return;
 }
-
 
 function getAllRoutes($conn)
 {
@@ -37,11 +36,9 @@ function getAllRoutes($conn)
                     $trip_ids[] = $row['trip_id'];
                 }
             }
-            $route.add_trips($trip_ids);
+            $route->add_trips($trip_ids);
             $results[] = $route;
-
         }
-
         $result->close();
     }
     return $results;

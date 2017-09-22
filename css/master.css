@@ -53,6 +53,9 @@ body > .container {
 
 #listDiv{
     margin-top: 20px;
-    width: 100px;
     float: left;
+}
+
+#routeSelecter{
+    width: 100px;
 }
