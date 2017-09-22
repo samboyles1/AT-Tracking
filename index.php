@@ -31,9 +31,13 @@ require_once 'include/header.php';
 <script src="scripts/map.js"></script>
 <script>
     $(document).ready(function() {
-
     });
 </script>
 <?php
 require_once 'include/footer.php';
+require_once 'database.php';
+
+getAllRoutes();
+
+
 ?>

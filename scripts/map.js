@@ -35,7 +35,7 @@ function updateBusPosition() {
     $.ajax({
         type: "GET",
         headers: { 'Ocp-Apim-Subscription-Key': '093a87b71c14401f9ae9b72c9ace16a9' },
-        url: 'https://api.at.govt.nz/v2/public/realtime/vehiclelocations?vehicleid=2928', //get the data for vehicle 3071 - we know it exists
+        url: 'https://api.at.govt.nz/v2/public/realtime/vehiclelocations?vehicleid=2928', //get the data for one trip id - we know it exists
         dataType: 'json',
         success: function (data) {
             var busPosition = data.response.entity[0].vehicle.position;
