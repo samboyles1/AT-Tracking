@@ -6,7 +6,7 @@ require_once 'database.php';
 
 <div id="wrapper">
     <div id="listDiv">
-        <select multiple size="10" id="routeSelecter">
+        <select multiple size="28" id="routeSelecter">
             <?php
             $routes = getAllRoutes($conn);
             foreach($routes as $route) { ?>

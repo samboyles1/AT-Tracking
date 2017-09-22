@@ -25,7 +25,7 @@ function getAllRoutes($conn)
         while ($row = $result->fetch_array(MYSQLI_ASSOC))
         {
 
-            $results[] = new Route($row['name'], $row['price'], $row['quantity']);
+            $results[] = new Route($row['name'], $row['price'], $row['quantity']); //need to change these values
 
             $current_route_id = $row['route_id'];
             $route = new Route($row['route_short_name'], $row['route_id']);
