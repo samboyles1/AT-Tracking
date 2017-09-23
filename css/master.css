@@ -37,7 +37,7 @@ body > .container {
 }
 
 #wrapper{
-
+    display: flex;
 }
 
 #mapdiv {
@@ -49,13 +49,29 @@ body > .container {
     -webkit-border-radius:20px;
     z-index:0;
     box-shadow: 0px 2px 15px -3px #D6D6D6;
+    flex: 1;
 }
 
-#listDiv{
+#listWrapper{
     margin-top: 20px;
-    float: left;
+    margin-left: -5px;
 }
 
 #routeSelecter{
-    width: 100px;
+    width: 180px;
+    height: 570px;
+    box-shadow: 0px 2px 15px -3px #D6D6D6;
+    padding-top: 0.2rem;
+    border-style: none;
+    outline: none;
+}
+
+::selection {
+    background: #88dd9b; /* WebKit/Blink Browsers */
+}
+
+h1{
+    color: #303030;
+    font-size: 24px;
+    font-weight: 900;
 }

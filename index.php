@@ -5,14 +5,17 @@ require_once 'database.php';
 ?>
 
 <div id="wrapper">
-    <div id="listDiv">
-        <select multiple size="28" id="routeSelecter">
-            <?php
-            $routes = getAllRoutes($conn);
-            foreach($routes as $route) { ?>
-                <option value="<?php echo $route->get_id() ?>"><?php echo $route->get_name() ?></option>
-            <?php }?>
-        </select>
+    <div id="listWrapper">
+        <div><h1>Select a route</h1></div>
+        <div id="listDiv">
+            <select multiple size="28" id="routeSelecter">
+                <?php
+                $routes = getAllRoutes($conn);
+                foreach($routes as $route) { ?>
+                    <option id="options" value="<?php echo $route->get_id() ?>"><?php echo $route->get_name() ?></option>
+                <?php }?>
+            </select>
+        </div>
     </div>
     <div id="mapdiv"></div>
 </div>
