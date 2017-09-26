@@ -11,7 +11,7 @@ function setup() {
     //get the intial bus position 
     updateBusPosition();
     //refresh bus position every 30 secs(is in milliseconds)
-    setInterval(updateBusPosition, 30000);
+    //setInterval(updateBusPosition, 30000);
 }
 
 
@@ -35,24 +35,23 @@ function updateBusPosition() {
     $.ajax({
         type: "GET",
         headers: { 'Ocp-Apim-Subscription-Key': '093a87b71c14401f9ae9b72c9ace16a9' },
-        url: 'https://api.at.govt.nz/v2/public/realtime/vehiclelocations?vehicleid=2928', //get the data for one trip id - we know it exists
+        url: 'https://api.at.govt.nz/v2/public/realtime',
         dataType: 'json',
         success: function (data) {
-            var busPosition = data.response.entity[0].vehicle.position;
-            //var busPosition = data.response.entity.position;
-            var busLatLng = { lat: busPosition.latitude, lng: busPosition.longitude };
+            var vehicles = [];
+            var entities = data.response.entity;
+            entities.forEach(function (e) {
+                if (e.vehicle && e.vehicle.trip && e.vehicle.trip.route_id == selected_route_id) {
+                    vehicles.push({ 'vehicle_id': e.vehicle.vehicle.id, 'latitude': e.vehicle.position.latitude, 'longitude': e.vehicle.position.longitude });
+                }
+            });
 
-            //make the one global marker if it doesn't already exist
-            if (busMarker == null) {
-                busMarker = new google.maps.Marker();    
-            }
+            var infoWindow = new google.maps.InfoWindow({
+                content: busInfoString
+            });
 
-            var busInfoString = 'Bus Number\ntripid\nlatitude\nlongitude'; //Need to add the actual values for these but the popup works
-
-
-             var infoWindow = new google.maps.InfoWindow({
-                 content: busInfoString
-             });
+            //The api returns the vehicles for ALL the active routes. 
+            //The forEach loop then just selects the route you asked for (selected_route_id)
 
             //move the marker to the new bus lat long
             busMarker.setPosition(busLatLng);
