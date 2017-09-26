@@ -15,6 +15,7 @@ $routes = getAllRoutes($conn);
 </script>
 
 <div id="wrapper">
+<<<<<<< HEAD
     <div id="listDiv">
         <select id="routeSelecter" style="width: 100px" onchange="showTripsForRoute(this.value)">
             <?php
@@ -22,6 +23,19 @@ $routes = getAllRoutes($conn);
             <option value="<?php echo $route->get_id() ?>"><?php echo $route->get_name() ?></option>
             <?php }?>
         </select>
+=======
+    <div id="listWrapper">
+        <div><h1>Select a route</h1></div>
+        <div id="listDiv">
+            <select multiple size="28" id="routeSelecter">
+                <?php
+                $routes = getAllRoutes($conn);
+                foreach($routes as $route) { ?>
+                    <option id="options" value="<?php echo $route->get_id() ?>"><?php echo $route->get_name() ?></option>
+                <?php }?>
+            </select>
+        </div>
+>>>>>>> origin/master
     </div>
     <div id="mapdiv"></div>
 </div>

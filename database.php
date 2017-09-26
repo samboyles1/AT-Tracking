@@ -24,9 +24,12 @@ function getAllRoutes($conn)
     else {
         while ($row = $dbresult->fetch_array(MYSQLI_ASSOC))
         {
+<<<<<<< HEAD
 
             //$dbresults[] = new Route($row['name'], $row['price'], $row['quantity']);
 
+=======
+>>>>>>> origin/master
             $current_route_id = $row['route_id'];
             $route = new Route($row['route_short_name'] . ' ' . $row['route_long_name'], $row['route_id']);
             $trip_ids = array();
