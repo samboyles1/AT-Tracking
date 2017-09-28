@@ -96,6 +96,10 @@ function updateBusPositions() {
 }
 
 
+/**
+ * adds markers for each vehickle to the map
+ * @param vehicles an array of vehicles to be displayed
+ */
 function showVehicles(vehicles) {
     var bounds = new google.maps.LatLngBounds();
 

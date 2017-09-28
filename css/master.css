@@ -42,7 +42,7 @@ body > .container {
 
 #mapdiv {
     width: 1000px;
-    margin-top: 20px;
+    margin-top: 18px;
     margin-left: 200px;
     margin-right: 5px;
     height: 600px;
@@ -53,17 +53,11 @@ body > .container {
 }
 
 #listWrapper{
-    margin-top: 20px;
-    margin-left: -5px;
+    margin-top: 18px;
 }
 
 #routeSelecter{
     width: 180px;
-    height: 570px;
-    box-shadow: 0px 2px 15px -3px #D6D6D6;
-    padding-top: 0.2rem;
-    border-style: none;
-    outline: none;
 }
 
 ::selection {
@@ -71,7 +65,7 @@ body > .container {
 }
 
 h1{
-    color: #303030;
+    color: #3d3d3d;
     font-size: 24px;
     font-weight: 900;
 }
