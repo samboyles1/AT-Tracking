@@ -4,21 +4,17 @@ require_once 'include/header.php';
 require_once 'database.php';
 ?>
 
-
 <script>
     var dbRoutes = <?php echo json_encode(getAllRoutes($conn)); ?>;
 </script>
 
-
-<div id="wrapper">
-    <div id="listWrapper">
-        <div><h1>Select a route</h1></div>
-        <div id="listDiv">
-            <select id="routeSelector" style="width: 190px " onchange="setSelectedRoute(this.value)"></select>
-        </div>
-    </div>
-    <div id="mapdiv"></div>
+<div id="listDiv">
+    <h1 id="selectorTitle">Select a Route</h1>
+    <select id="routeSelector" class="select-style" onchange="setSelectedRoute(this.value)">
+        <option value="" disabled selected>routes...</option>
+    </select>
 </div>
+<div id="mapdiv"></div>
 
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBh1cr8Qd4TKgA4DVOhH5NBLNvgEgmqBg4&callback=setup">

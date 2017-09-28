@@ -2,9 +2,10 @@
   position: relative;
   min-height: 100%;
 }
+
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 .footer {
@@ -28,7 +29,7 @@ body {
 }
 
 body > .container {
-  padding: 60px 15px 0;
+  padding: 100px 0px 20px 0px;
 }
 
 .footer > .container {
@@ -36,36 +37,67 @@ body > .container {
   padding-left: 15px;
 }
 
-#wrapper{
-    display: flex;
-}
-
 #mapdiv {
-    width: 1000px;
-    margin-top: 18px;
-    margin-left: 200px;
-    margin-right: 5px;
-    height: 600px;
+    width: 900px;
+    height: 500px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 10%);
     -webkit-border-radius:20px;
     z-index:0;
     box-shadow: 0px 2px 15px -3px #D6D6D6;
-    flex: 1;
+    display: none;
 }
 
-#listWrapper{
-    margin-top: 18px;
+#listDiv{
+    margin-bottom: 20px;
 }
 
-#routeSelecter{
-    width: 180px;
-}
-
-::selection {
-    background: #88dd9b; /* WebKit/Blink Browsers */
-}
-
-h1{
-    color: #3d3d3d;
-    font-size: 24px;
+h1 {
+    position: absolute;
+    left: 50%;
+    top: 140%;
+    text-align: center;
+    transform: translateX(-50%) translateY(-50%);
     font-weight: 900;
+    font-size: 42px;
+    color: #525252;
+}
+
+.select-style {
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%);
+    outline: none;
+    border: 1px solid #ccc;
+    width: 400px;
+    height: 50px;
+    border-radius: 8px;
+    overflow: hidden;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select-style select {
+    padding: 5px 8px 0px 5px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0px 0px 0px 10px;
+    font-size: 20px;
+    color:#999;
 }

@@ -60,7 +60,16 @@ function getRouteName(route_id) {
 function setSelectedRoute(value) {
     selected_route_id = value;
     updateBusPositions();
+    $(".select-style").animate({top: "12%"}, 350);
+    $("#mapdiv").fadeIn(1000);
+    $("#selectorTitle").fadeOut(200);
+    refreshMapOnDisplay();
     setInterval(updateBusPositions, 30000);
+
+}
+
+function refreshMapOnDisplay(){
+    google.maps.event.trigger(googlemap, "resize");
 }
 
 /**
