@@ -5,9 +5,9 @@ require_once 'database.php';
 ?>
 
 
-<!--<script>-->
-<!--    var dbRoutes = --><?////php echo json_encode(getAllRoutes($conn)); ?><!--;-->
-<!--</script>-->
+<script>
+    var dbRoutes = <?php echo json_encode(getAllRoutes($conn)); ?>;
+</script>
 
 
 <div id="wrapper">
