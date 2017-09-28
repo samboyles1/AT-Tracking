@@ -114,7 +114,19 @@ function showVehicles(vehicles) {
             position: { lat: v.latitude, lng: v.longitude },
             title: 'Bus: ' + v.vehicle_id,
             map: googlemap
+
         });
+
+        var busInfoString = 'Bus Number: ' + v.vehicle_id;
+
+        var infoWindow = new google.maps.InfoWindow({
+            content: busInfoString
+        });
+
+        busMarker.addListener('click', function () {
+            infoWindow.open(googlemap, busMarker)
+        });
+
 
         markers.push(busMarker);
         //the map will zoom out to fit more markers if they were added to the bounds
