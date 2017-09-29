@@ -59,12 +59,18 @@ function getRouteName(route_id) {
     return route ? route.route_name : (route_id + ' not found');
 }
 
+function transitionElements(){
+    $(".select-style").animate({top: "12%"}, 350);
+    $(".spinner").css({top: "12.5%"});
+    $(".spinner").css({left: "67%"});
+    $("#mapdiv").fadeIn(1000);
+    $("#selectorTitle").fadeOut(200);
+}
+
 function setSelectedRoute(value) {
     selected_route_id = value;
     updateBusPositions();
-    $(".select-style").animate({top: "12%"}, 350);
-    $("#mapdiv").fadeIn(1000);
-    $("#selectorTitle").fadeOut(200);
+    transitionElements();
     refreshMapOnDisplay();
     setInterval(updateBusPositions, 30000);
 
@@ -82,7 +88,7 @@ function updateBusPositions() {
     if (selected_route_id == null) {
         return;
     }
-
+    $(".spinner").fadeIn(200);
     $.ajax({
         type: "GET",
         headers: api_header,
@@ -91,11 +97,13 @@ function updateBusPositions() {
         success: function (data) {
             var vehicles = [];
             var entities = data.response.entity;
+
             entities.forEach(function (e) {
                 if (e.vehicle && e.vehicle.trip && e.vehicle.trip.route_id == selected_route_id) {
                     vehicles.push({ 'vehicle_id': e.vehicle.vehicle.id, 'latitude': e.vehicle.position.latitude, 'longitude': e.vehicle.position.longitude });
                 }
             });
+            $(".spinner").fadeOut(200);
             if (vehicles.length > 0) {
                 showVehicles(vehicles);
             }
