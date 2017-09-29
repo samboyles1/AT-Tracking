@@ -68,6 +68,7 @@ h1 {
 }
 
 .select-style {
+    display: none;
     position: fixed;
     left: 50%;
     top: 30%;
@@ -103,4 +104,48 @@ select{
     padding: 0px 0px 0px 10px;
     font-size: 20px;
     color:#999;
+}
+
+.spinner {
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%);
+
+    width: 40px;
+    height: 40px;
+}
+
+.double-bounce1, .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #88dd9b;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+    0%, 100% { -webkit-transform: scale(0.0) }
+    50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+    0%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    } 50% {
+          transform: scale(1.0);
+          -webkit-transform: scale(1.0);
+      }
 }

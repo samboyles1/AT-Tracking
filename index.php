@@ -13,6 +13,11 @@ require_once 'database.php';
         <h1 id="selectorTitle">Select a Route</h1>
     </div>
 
+    <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+
     <div>
         <select id="routeSelector" class="select-style" onchange="setSelectedRoute(this.value)">
             <option value="" disabled selected>routes...</option>

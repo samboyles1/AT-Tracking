@@ -46,6 +46,8 @@ function loadCurrentRoutes() {
                     $('#routeSelector').append(new Option(routeName, e.vehicle.trip.route_id));
                 }
             });
+            $(".select-style").slideToggle();
+            $(".spinner").fadeOut(100);
         }
     });
 }
