@@ -9,10 +9,15 @@ require_once 'database.php';
 </script>
 
 <div id="listDiv">
-    <h1 id="selectorTitle">Select a Route</h1>
-    <select id="routeSelector" class="select-style" onchange="setSelectedRoute(this.value)">
-        <option value="" disabled selected>routes...</option>
-    </select>
+    <div id="headingDiv">
+        <h1 id="selectorTitle">Select a Route</h1>
+    </div>
+
+    <div>
+        <select id="routeSelector" class="select-style" onchange="setSelectedRoute(this.value)">
+            <option value="" disabled selected>routes...</option>
+        </select>
+    </div>
 </div>
 <div id="mapdiv"></div>
 

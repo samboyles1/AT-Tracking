@@ -22,10 +22,13 @@ body {
     background: linear-gradient(to right, #88dd9b, #87dcc3);
     width: 100%;
     height: 60px;
-    font-family: Helvetica;
-    font-size: 24px;
-    font-weight: bold;
     box-shadow: 0px 2px 15px -3px #D6D6D6;
+}
+
+.navbar-brand{
+    font-family: Helvetica;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 body > .container {
@@ -54,9 +57,9 @@ body > .container {
 }
 
 h1 {
-    position: absolute;
+    position: fixed;
     left: 50%;
-    top: 140%;
+    top: 25%;
     text-align: center;
     transform: translateX(-50%) translateY(-50%);
     font-weight: 900;
