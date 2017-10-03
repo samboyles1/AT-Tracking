@@ -2,7 +2,9 @@
 <project version="4">
   <component name="PhpIncludePathManager">
     <include_path>
+      <path value="/Applications/MAMP/bin/php/php7.1.6/lib/php" />
       <path value="/Applications/XAMPP.app" />
     </include_path>
   </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
 </project>

@@ -19,9 +19,10 @@ require_once 'database.php';
             <div class="double-bounce2"></div>
         </div>
 
+
         <div>
             <select id="routeSelector" class="select-style" onchange="setSelectedRoute(this.value)">
-                <option value="" disabled selected>routes...</option>
+                <option value="" disabled selected>Routes...</option>
             </select>
         </div>
 
