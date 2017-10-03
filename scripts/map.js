@@ -3,7 +3,7 @@
 var googlemap = null;
 
 var selected_route_id = null;
-
+var lastOpenedInfoWindow = null;
 var markers = [];
 
 var api_url = 'https://api.at.govt.nz/v2/';
@@ -129,24 +129,43 @@ function showVehicles(vehicles) {
     });
 
     vehicles.forEach(function (v) {
+
+        var icon = {
+            url: "../models/bus_pointer.svg", // url
+            scaledSize: new google.maps.Size(35, 50), // scaled size
+            origin: new google.maps.Point(0,0), // origin
+            anchor: new google.maps.Point(0, 0) // anchor
+        };
+
+
         var busMarker = new google.maps.Marker({
             position: { lat: v.latitude, lng: v.longitude },
             title: 'Bus: ' + v.vehicle_id,
-            map: googlemap
+            map: googlemap,
+            icon: icon
 
         });
 
-        var busInfoString = 'Bus Number: ' + v.vehicle_id;
+        var busInfoString = 'Bus Number: ' + v.vehicle_id ;
+        busInfoString += '<br>Route: ' + getRouteName(selected_route_id);
+        busInfoString += '<br>Latitude: ' + v.latitude;
+        busInfoString += '<br>Longitude: ' + v.longitude;
 
         var infoWindow = new google.maps.InfoWindow({
             content: busInfoString
         });
 
         busMarker.addListener('click', function () {
+            closeLastOpenWindow();
             infoWindow.open(googlemap, busMarker)
+            lastOpenedInfoWindow = infoWindow;
         });
 
-
+        function closeLastOpenWindow() {
+            if (lastOpenedInfoWindow) {
+                lastOpenedInfoWindow.close();
+            }
+        }
         markers.push(busMarker);
         //the map will zoom out to fit more markers if they were added to the bounds
         bounds.extend(busMarker.position);
