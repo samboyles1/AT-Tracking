@@ -43,6 +43,7 @@ function loadCurrentRoutes() {
             entities.forEach(function (e) {
                 if (e.vehicle && e.vehicle.trip) {
                     var routeName = getRouteName(e.vehicle.trip.route_id);
+                    //sort getRouteName before appending so drop down is in order 
                     $('#routeSelector').append(new Option(routeName, e.vehicle.trip.route_id));
                 }
             });
