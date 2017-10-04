@@ -157,6 +157,7 @@ function showVehicles(vehicles) {
 
         busMarker.addListener('click', function () {
             closeLastOpenWindow();
+            googlemap.panTo(busMarker.getPosition());
             infoWindow.open(googlemap, busMarker)
             lastOpenedInfoWindow = infoWindow;
         });
