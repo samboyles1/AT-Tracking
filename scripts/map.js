@@ -158,8 +158,19 @@ function showVehicles(vehicles) {
         busMarker.addListener('click', function () {
             closeLastOpenWindow();
             googlemap.panTo(busMarker.getPosition());
+            googlemap.setZoom(18);
             infoWindow.open(googlemap, busMarker)
             lastOpenedInfoWindow = infoWindow;
+        });
+        google.maps.event.addListener(infoWindow, 'closeclick', function() {
+            googlemap.panTo(this.getPosition());
+            googlemap.fitBounds(bounds);
+        });
+
+        google.maps.event.addListener(googlemap, "click", function(event) {
+            infoWindow.close();
+            googlemap.panTo(busMarker.getPosition());
+            googlemap.fitBounds(bounds);
         });
 
         function closeLastOpenWindow() {
