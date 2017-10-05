@@ -43,6 +43,7 @@ function loadCurrentRoutes() {
             entities.forEach(function (e) {
                 if (e.vehicle && e.vehicle.trip) {
                     var routeName = getRouteName(e.vehicle.trip.route_id);
+                    //sort getRouteName before appending so drop down is in order 
                     $('#routeSelector').append(new Option(routeName, e.vehicle.trip.route_id));
                 }
             });
@@ -157,8 +158,20 @@ function showVehicles(vehicles) {
 
         busMarker.addListener('click', function () {
             closeLastOpenWindow();
+            googlemap.panTo(busMarker.getPosition());
+            googlemap.setZoom(18);
             infoWindow.open(googlemap, busMarker)
             lastOpenedInfoWindow = infoWindow;
+        });
+        google.maps.event.addListener(infoWindow, 'closeclick', function() {
+            googlemap.panTo(this.getPosition());
+            googlemap.fitBounds(bounds);
+        });
+
+        google.maps.event.addListener(googlemap, "click", function(event) {
+            infoWindow.close();
+            googlemap.panTo(busMarker.getPosition());
+            googlemap.fitBounds(bounds);
         });
 
         function closeLastOpenWindow() {

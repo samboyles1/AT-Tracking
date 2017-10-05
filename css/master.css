@@ -155,28 +155,3 @@ select{
       }
 }
 
-#iw-container {
-    margin-bottom: 10px;
-}
-
-#iw-container .iw-title {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 22px;
-    font-weight: 400;
-    padding: 10px;
-    background: linear-gradient(to right, #88dd9b, #87dcc3);
-    color: white;
-    margin: 0;
-    border-radius: 2px 2px 0 0;
-}
-
-#iw-container .iw-content {
-    font-size: 13px;
-    line-height: 18px;
-    font-weight: 400;
-    margin-right: 1px;
-    padding: 15px 5px 20px 15px;
-    max-height: 140px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
