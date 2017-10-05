@@ -131,7 +131,7 @@ function showVehicles(vehicles) {
     vehicles.forEach(function (v) {
 
         var icon = {
-            url: "../models/bus_pointer.svg", // url
+            url: "models/bus_pointer.svg",
             scaledSize: new google.maps.Size(35, 50), // scaled size
             origin: new google.maps.Point(0,0), // origin
             anchor: new google.maps.Point(0, 0) // anchor
