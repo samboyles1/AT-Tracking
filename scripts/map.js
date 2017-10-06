@@ -1,6 +1,4 @@
-﻿//These two globals are used in all the functions
-
-var googlemap = null;
+﻿var googlemap = null;
 
 var selected_route_id = null;
 var lastOpenedInfoWindow = null;
@@ -42,14 +40,17 @@ function loadCurrentRoutes() {
             var entities = data.response.entity;
             var allRoutes = [];
             entities.forEach(function (e) {
+                //make a list of all unique route (For drop down)
                 if (e.vehicle && e.vehicle.trip && !inRoutes(allRoutes, e.vehicle.trip.route_id)) {
                     var routeName = getRouteName(e.vehicle.trip.route_id); 
                     allRoutes.push((new Option(routeName, e.vehicle.trip.route_id)));
                 }
             });
 
+            //sort by name
             allRoutes.sort(sortRoute);
 
+            //add all the routes to the drop down
             for(var i = 0 ; i < allRoutes.length ; i++){
                 $('#routeSelector').append(allRoutes[i]);
             }
@@ -60,6 +61,7 @@ function loadCurrentRoutes() {
     });
 }
 
+//returns true if the route_id is already in the list
 function inRoutes(allRoutes, route_id) {
     for (var i = 0 ; i < allRoutes.length ; i++) {
         if (allRoutes[i].value == route_id) {
@@ -69,7 +71,7 @@ function inRoutes(allRoutes, route_id) {
     return false;
 }
 
-
+//sorting the routes by name
 function sortRoute(a, b){
     if(a.text < b.text){
         return -1
@@ -81,6 +83,7 @@ function sortRoute(a, b){
     return 0;
 }
 
+//find the name of the route for this route_id from the list we got from the database at start up
 function getRouteName(route_id) {
     var route = dbRoutes.find(function (r) {
         return r.id == route_id;
@@ -96,6 +99,8 @@ function transitionElements(){
     $("#selectorTitle").fadeOut(200);
 }
 
+
+//causes the map to refresh with new bus positions every 30secs
 function setSelectedRoute(value) {
     selected_route_id = value;
     updateBusPositions();
@@ -109,10 +114,9 @@ function refreshMapOnDisplay(){
     google.maps.event.trigger(googlemap, "resize");
 }
 
-/**
-* calls the vehicle location api and returns a lat long for a single bus
-* moves marker to location of new lat lon of bus
-*/
+
+//calls the realtime api and builds a list of buses (with their lat long) for the selected_route_id
+//one big api call to get all routes then filters down to just the selected route
 function updateBusPositions() {
     if (selected_route_id == null) {
         return;
@@ -145,7 +149,7 @@ function updateBusPositions() {
 
 
 /**
- * adds markers for each vehickle to the map
+ * adds markers for each vehichle to the map
  * @param vehicles an array of vehicles to be displayed
  */
 function showVehicles(vehicles) {
@@ -186,8 +190,11 @@ function showVehicles(vehicles) {
 
         busMarker.addListener('click', function () {
             closeLastOpenWindow();
+            //maybe we dont need these two
+            // wont zoom in on click
             googlemap.panTo(busMarker.getPosition());
             googlemap.setZoom(18);
+
             infoWindow.open(googlemap, busMarker)
             lastOpenedInfoWindow = infoWindow;
         });
@@ -198,6 +205,7 @@ function showVehicles(vehicles) {
 
         google.maps.event.addListener(googlemap, "click", function(event) {
             infoWindow.close();
+            //same again
             googlemap.panTo(busMarker.getPosition());
             googlemap.fitBounds(bounds);
         });
