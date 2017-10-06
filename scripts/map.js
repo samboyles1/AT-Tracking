@@ -42,10 +42,8 @@ function loadCurrentRoutes() {
             var entities = data.response.entity;
             var allRoutes = [];
             entities.forEach(function (e) {
-                if (e.vehicle && e.vehicle.trip) {
-                    var routeName = getRouteName(e.vehicle.trip.route_id);
-
-                    //sort getRouteName before appending so drop down is in order 
+                if (e.vehicle && e.vehicle.trip && !inRoutes(allRoutes, e.vehicle.trip.route_id)) {
+                    var routeName = getRouteName(e.vehicle.trip.route_id); 
                     allRoutes.push((new Option(routeName, e.vehicle.trip.route_id)));
                 }
             });
@@ -53,7 +51,6 @@ function loadCurrentRoutes() {
             allRoutes.sort(sortRoute);
 
             for(var i = 0 ; i < allRoutes.length ; i++){
-                console.log(allRoutes[i]);
                 $('#routeSelector').append(allRoutes[i]);
             }
 
@@ -62,6 +59,16 @@ function loadCurrentRoutes() {
         }
     });
 }
+
+function inRoutes(allRoutes, route_id) {
+    for (var i = 0 ; i < allRoutes.length ; i++) {
+        if (allRoutes[i].value == route_id) {
+            return true;
+        }
+    }
+    return false;
+}
+
 
 function sortRoute(a, b){
     if(a.text < b.text){

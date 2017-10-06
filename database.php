@@ -14,9 +14,8 @@ function getAllRoutes($conn)
 {
     $results = array();   
     $other_query = "SELECT routes.route_id, routes.route_short_name, routes.route_long_name
-                    FROM akl_transport.routes
-                    ORDER BY routes.route_short_name";
-                    //tring to sort data coming from the database
+                    FROM akl_transport.routes";
+                  
 
     $dbresult = $conn->query($other_query);
     if (!$dbresult)

@@ -8,16 +8,11 @@
 
 class route {
     var $id;
-    var $trip_ids;
     var $route_name;
 
     function __construct($route_short_name, $route_id) {
         $this->id = $route_id;
         $this->route_name = $route_short_name;
-    }
-
-    function add_trips($trips){
-        $this->trip_ids = $trips;
     }
 
     function get_name(){
