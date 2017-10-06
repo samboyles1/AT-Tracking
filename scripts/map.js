@@ -51,6 +51,7 @@ function loadCurrentRoutes() {
             });
 
             allRoutes.sort(sortRoute);
+
             for(var i = 0 ; i < allRoutes.length ; i++){
                 console.log(allRoutes[i]);
                 $('#routeSelector').append(allRoutes[i]);
@@ -63,11 +64,11 @@ function loadCurrentRoutes() {
 }
 
 function sortRoute(a, b){
-    if(a.routeName < b.routeName){
+    if(a.text < b.text){
         return -1
     }
 
-    if(a.routeName > b.routeName){
+    if(a.text > b.text){
         return 1
     }
     return 0;
