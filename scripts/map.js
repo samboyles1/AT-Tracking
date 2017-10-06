@@ -40,17 +40,37 @@ function loadCurrentRoutes() {
         dataType: 'json',
         success: function (data) {
             var entities = data.response.entity;
+            var allRoutes = [];
             entities.forEach(function (e) {
                 if (e.vehicle && e.vehicle.trip) {
                     var routeName = getRouteName(e.vehicle.trip.route_id);
+
                     //sort getRouteName before appending so drop down is in order 
-                    $('#routeSelector').append(new Option(routeName, e.vehicle.trip.route_id));
+                    allRoutes.push((new Option(routeName, e.vehicle.trip.route_id)));
                 }
             });
+
+            allRoutes.sort(sortRoute);
+            for(var i = 0 ; i < allRoutes.length ; i++){
+                console.log(allRoutes[i]);
+                $('#routeSelector').append(allRoutes[i]);
+            }
+
             $(".select-style").slideToggle();
             $(".spinner").fadeOut(100);
         }
     });
+}
+
+function sortRoute(a, b){
+    if(a.routeName < b.routeName){
+        return -1
+    }
+
+    if(a.routeName > b.routeName){
+        return 1
+    }
+    return 0;
 }
 
 function getRouteName(route_id) {
