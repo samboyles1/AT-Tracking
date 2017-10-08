@@ -15,7 +15,9 @@ function getAllRoutes($conn)
     $results = array();   
     $other_query = "SELECT routes.route_id, routes.route_short_name, routes.route_long_name
                     FROM akl_transport.routes";
-                  
+
+    //sanitize the query
+    mysqlCleaner($other_query);
 
     $dbresult = $conn->query($other_query);
     if (!$dbresult)
@@ -32,4 +34,11 @@ function getAllRoutes($conn)
     }
     return $results;
 }
+
+function mysqlCleaner($data)
+{
+    $data= stripslashes($data);
+    return $data;
+}
+
 ?>

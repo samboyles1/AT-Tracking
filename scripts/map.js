@@ -91,6 +91,7 @@ function getRouteName(route_id) {
     return route ? route.route_name : (route_id + ' not found');
 }
 
+//css for the loading icons
 function transitionElements(){
     $(".select-style").animate({top: "12%"}, 350);
     $(".spinner").css({top: "12.5%"});
@@ -110,6 +111,7 @@ function setSelectedRoute(value) {
 
 }
 
+//refresh map size when window is changed
 function refreshMapOnDisplay(){
     google.maps.event.trigger(googlemap, "resize");
 }
@@ -190,14 +192,10 @@ function showVehicles(vehicles) {
 
         busMarker.addListener('click', function () {
             closeLastOpenWindow();
-            //maybe we dont need these two
-            // wont zoom in on click
-            googlemap.panTo(busMarker.getPosition());
-            googlemap.setZoom(18);
-
             infoWindow.open(googlemap, busMarker)
             lastOpenedInfoWindow = infoWindow;
         });
+
         google.maps.event.addListener(infoWindow, 'closeclick', function() {
             googlemap.panTo(this.getPosition());
             googlemap.fitBounds(bounds);
